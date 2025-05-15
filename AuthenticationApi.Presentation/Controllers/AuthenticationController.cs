@@ -18,7 +18,7 @@ namespace AuthenticationApi.Presentation.Controllers
                 return BadRequest(ModelState);
 
             var result = await userInterface.Register(appUserDTO);
-            return result.Flag ? Ok(result) : BadRequest(Response);
+            return result.Flag ? Ok(result) : BadRequest(Request);
         }
 
         [HttpPost("login")]
@@ -38,7 +38,7 @@ namespace AuthenticationApi.Presentation.Controllers
                 return BadRequest("Invalid user Id");
 
             var user = await userInterface.GetUser(id);
-            return user.Id>0 ? Ok(user) : BadRequest(Response);
+            return user.Id>0 ? Ok(user) : BadRequest(Request);
         }
 
 
